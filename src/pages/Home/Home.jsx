@@ -1,4 +1,5 @@
 import DragonNews from "../../DragonNews/DragonNews";
+import Footer from "../../Foorter/Footer";
 import Header from "../Shared/Header/Header";
 import Navbar from "../Shared/Navbar/Navbar";
 import RightSideNav from "../Shared/RigthSideNav/RightSideNav";
@@ -18,7 +19,7 @@ const Home = () => {
                     </div>
                     <div className=""><RightSideNav></RightSideNav></div>
             </div>
-            
+            <Footer></Footer>
         </div>
     );
 };
