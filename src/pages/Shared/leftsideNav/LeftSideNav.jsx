@@ -1,37 +1,22 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const LeftSideNav = () => {
+    const [catagories , setCatagories] = useState([]);
+    useEffect(() => {
+        fetch('categories.json')
+        .then(res => res.json())
+        .then(data => setCatagories(data))
+    },[])
     return (
         <div className="border-2 p-4">
-            <h2 className="text-2xl font-semibold py-4">All Caterogy</h2>
+            <h2 className="text-2xl font-semibold py-4">All Caterogy{catagories.length}</h2>
             <div className=''>
-                <a href='#' className="btn rounded-none border-none  hover:btn-outline w-full ">
-                National News
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                Breaking News
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                Regular News
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                International News
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                Sports
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                Entertainment
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                Culture
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                Arts
-                </a>
-                <a href='#' className="btn rounded-none border-none bg-white hover:btn-outline  w-full ">
-                All News
-                </a>
+                {
+                    catagories.map(catagorie =>
+                         <Link key={catagorie.id} to={`/catagorie/${catagorie.id}`} className="btn justify-start bg-white rounded-none border-none hover:btn-outline w-full">{catagorie.name}</Link>)
+                }
             </div>
         </div>
     );
